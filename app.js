@@ -1,6 +1,14 @@
 const express = require('express'); 
 const path = require('path');
 
+const {
+    PORT = 5400,
+    NODE_ENV = 'development',
+
+} = process.env;
+
+const IN_PROD = NODE_ENV === 'production';
+
 
 
 const app = express();
@@ -12,6 +20,6 @@ app.use(express.static(publicDirectory));
 app.use('/', require('./routers/pages'));
 
 
-app.listen(5000,() => {
-    console.log('server started on port 5000');
+app.listen(PORT,() => {
+    console.log(`server started on port ${PORT}`);
 });
